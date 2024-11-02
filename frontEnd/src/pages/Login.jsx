@@ -1,6 +1,8 @@
+import { Link } from "react-router-dom";
+
 const Login = () => {
   return (
-    <div className="hero flex h-full  bg-base-100  mt-11 max-w-full rounded-lg justify-center items-center  backdrop-filter bg-clip-padding backdrop-blur-lg bg-opacity-0">
+    <div className="hero flex h-full  bg-base-100   max-w-full rounded-lg justify-center items-center  backdrop-filter bg-clip-padding backdrop-blur-lg bg-opacity-0">
       <div className="hero-content flex-col l">
         <div className="text-center p-4 lg:text-left">
           <h1 className="text-4xl font-bold">Login now!</h1>
@@ -9,11 +11,11 @@ const Login = () => {
           <form className="card-body p-4 ">
             <div className="form-control ">
               <label className="label">
-                <span className="label-text">Email</span>
+                <span className="label-text">UserName</span>
               </label>
               <input
-                type="email"
-                placeholder="email"
+                type="text"
+                placeholder="UserName"
                 className="input input-bordered"
                 required
               />
@@ -29,9 +31,17 @@ const Login = () => {
                 required
               />
               <label className="label">
-                <a href="#" className="label-text-alt pt-2 link link-hover">
+                <a href="#" className="label-text-alt pt-3 link link-hover">
                   Forgot password?
                 </a>
+              </label>
+              <label className="label">
+                <Link
+                  to={"/signup"}
+                  className="label-text-alt  link link-hover"
+                >
+                  {"Don't"} have an account?
+                </Link>
               </label>
             </div>
             <div className="form-control mt-6 ">

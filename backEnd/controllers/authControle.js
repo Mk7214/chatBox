@@ -6,12 +6,12 @@ export const signUp = async (req, res) => {
   try {
     const { Name, userName, password, confirmPassword, gender } = req.body;
     if (password !== confirmPassword) {
-      return res.status(400).json({ message: "passwords do not match" });
+      return res.status(400).json({ error: "passwords do not match" });
     }
 
     const existingUser = await User.findOne({ userName });
     if (existingUser) {
-      return res.status(400).json({ message: "User already exists" });
+      return res.status(400).json({ error: "User already exists" });
     }
 
     //password hashing
@@ -44,7 +44,7 @@ export const signUp = async (req, res) => {
     }
   } catch (e) {
     console.log("Error in signUp controller", e.message);
-    res.status(500).json({ message: e.message });
+    res.status(500).json({ error: e.message });
   }
 };
 
@@ -54,10 +54,10 @@ export const login = async (req, res) => {
     const user = await User.findOne({ userName });
     const isMatch = await bcrypt.compare(password, user.password || "");
     if (!user) {
-      return res.status(404).json({ message: "User not found" });
+      return res.status(404).json({ error: "User not found" });
     }
     if (!isMatch) {
-      return res.status(400).json({ message: "Invalid password" });
+      return res.status(400).json({ error: "Invalid password" });
     }
 
     generateTokenAndCookies(user._id, res);
@@ -69,16 +69,16 @@ export const login = async (req, res) => {
     });
   } catch (e) {
     console.log("Error in login controller", e.message);
-    res.status(500).json({ message: e.message });
+    res.status(500).json({ error: e.message });
   }
 };
 
 export const logout = async (req, res) => {
   try {
     res.cookie("token", "", { maxAge: 0 });
-    res.status(200).json({ message: "Logged out successfully" });
+    res.status(200).json({ error: "Logged out successfully" });
   } catch (e) {
     console.log("Error in logout controller", e.message);
-    res.status(500).json({ message: e.message });
+    res.status(500).json({ error: e.message });
   }
 };

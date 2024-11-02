@@ -1,8 +1,10 @@
 #root {
   display: flex;
-  max-width: 798px;
+  width: 798px;
   height: 599px;
   margin: auto;
+  align-items: center;
+  justify-content: center;
 }
 
 .logo {
