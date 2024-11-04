@@ -31,7 +31,7 @@ if(data.error){
     toast.success("Logged in successfully");
 }
 
-localStorage.setItem("user",JSON.stringify(data));
+localStorage.setItem("User",JSON.stringify(data));
 setAuth(data);
 
 

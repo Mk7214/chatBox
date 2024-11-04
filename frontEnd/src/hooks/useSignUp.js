@@ -40,7 +40,7 @@ const useSignUp = () => {
       if (data.error) {
         throw new Error(data.error);
       }
-      localStorage.setItem("UserInfo", JSON.stringify(data));
+      localStorage.setItem("User", JSON.stringify(data));
 
       setAuth(data);
     } catch (err) {
