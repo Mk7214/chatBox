@@ -26,5 +26,3 @@ app.listen(port, () => {
   connectDb();
   console.log(`server listening on ${port}`);
 });
-
-console.log("hello");

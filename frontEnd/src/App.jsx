@@ -11,12 +11,15 @@ function App() {
   return (
     <div className="w-full h-full p-3 items-center justify-center overflow-hidden bg-gray-400 backdrop-filter backdrop-blur-lg bg-opacity-0 bg-clip-padding">
       <Routes>
-        <Route path="/login" element={<Login />} />
         <Route
-          path="/signUp"
+          path="/"
+          element={auth ? <Home /> : <Navigate to={"/login"} />}
+        />
+        <Route path="/login" element={auth ? <Navigate to="/" /> : <Login />} />
+        <Route
+          path="/signup"
           element={auth ? <Navigate to="/" /> : <SignUp />}
         />
-        <Route path="/" element={auth ? <Home /> : <Navigate to="/login" />} />
       </Routes>
       <Toaster />
     </div>

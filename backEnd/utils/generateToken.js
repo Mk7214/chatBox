@@ -8,8 +8,10 @@ const generateTokenAndCookies = (userId, res) => {
   res.cookie("token", token, {
     maxAge: 10 * 24 * 60 * 60 * 1000, //expires in 10 days
     httpOnly: true, //http only cookie to prevent javascript access, securing from cross site scripting
-    secure: process.env.NODE_ENV !== "development",
-    sameSite: "strict", //cookies only sent on same site , csrf attack
+    // secure: process.env.NODE_ENV !== "development",
+    secure: false,
+    samesitre: "nonee",
+    // sameSite: "strict", //cookies only sent on same site , csrf attack
   });
 };
 
